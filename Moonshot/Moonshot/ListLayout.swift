@@ -41,6 +41,8 @@ struct MissionRow: View {
     
     var animation: Namespace.ID
     
+    @State var showSheet = false
+    
     var body: some View {
         HStack(alignment: .center) {
             Image(mission.image)
@@ -53,6 +55,12 @@ struct MissionRow: View {
                 .font(.headline)
             Text(mission.launchDate ?? "N/A")
                 .matchedGeometryEffect(id: mission.id, in: animation)
+        }
+        .onTapGesture {
+            showSheet = true
+        }
+        .sheet(isPresented: $showSheet) {
+            MissionView(mission: mission, astronauts: astronauts, animation: animation)
         }
     }
 }

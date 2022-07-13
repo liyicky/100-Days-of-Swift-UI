@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MissionView: View {
     
+//    @EnvironmentObject private var globals: GlobalVars
+    
     let mission: Mission
     struct CrewMember {
         let role: String
@@ -16,7 +18,9 @@ struct MissionView: View {
     }
     let crew: [CrewMember]
     
-    init(mission: Mission, astronauts: [String: Astronaut]) {
+    var animation: Namespace.ID
+    
+    init(mission: Mission, astronauts: [String: Astronaut], animation: Namespace.ID) {
         self.mission = mission
         
         self.crew = mission.crew.map { member in
@@ -26,6 +30,8 @@ struct MissionView: View {
                 fatalError("Missing \(member.name)")
             }
         }
+        
+        self.animation = animation
     }
     
     var body: some View {
@@ -38,6 +44,7 @@ struct MissionView: View {
                     Image(mission.image)
                         .resizable()
                         .scaledToFit()
+                        .matchedGeometryEffect(id: mission.image, in: animation)
                         .frame(width: geometry.size.width * 0.6)
                         .padding()
                         .background(
@@ -106,16 +113,5 @@ struct MissionView: View {
         }
         .navigationTitle(mission.displayName)
         .navigationBarTitleDisplayMode(.inline)
-        .background(.black)
-    }
-}
-
-struct MissionView_Previews: PreviewProvider {
-    
-    static let missions: [Mission] = Bundle.main.decode("missions.json")
-    static let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
-    
-    static var previews: some View {
-        MissionView(mission: missions[1], astronauts: astronauts)
     }
 }

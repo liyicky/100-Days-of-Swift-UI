@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GridLayout: View {
-    
+        
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
@@ -17,6 +17,9 @@ struct GridLayout: View {
     let astronauts: [String: Astronaut]
     
     var animation: Namespace.ID
+    
+    @State var showSheet = false
+    @State var selectedMission: Mission? = nil
     
     var body: some View {
         ScrollView(.vertical) {
@@ -27,7 +30,7 @@ struct GridLayout: View {
                             .resizable()
                             .scaledToFit()
                             .matchedGeometryEffect(id: mission.image, in: animation)
-                            .frame(width: 50, height: 50)
+                            .frame(width: 75, height: 75)
                         VStack {
                             Text(mission.displayName)
                                 .matchedGeometryEffect(id: mission.displayName, in: animation)
@@ -37,7 +40,14 @@ struct GridLayout: View {
                                 .font(.caption)
                         }
                         .frame(maxWidth: .infinity)
-                    }    
+                    } // VStack
+                    .onTapGesture {
+                        selectedMission = mission
+                        showSheet = true
+                    }
+                    .sheet(isPresented: $showSheet) {
+                        MissionView(mission: selectedMission ?? mission, astronauts: astronauts, animation: animation)
+                    }
                 }
             } // LazyVGrid
         }
