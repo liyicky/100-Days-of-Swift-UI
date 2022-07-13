@@ -71,8 +71,8 @@
 		5C910166287C514400251D45 /* Moonshot */ = {
 			isa = PBXGroup;
 			children = (
-				5C910185287E59D000251D45 /* AstronautView.swift */,
 				5C910167287C514400251D45 /* MoonshotApp.swift */,
+				5C910185287E59D000251D45 /* AstronautView.swift */,
 				5C910169287C514400251D45 /* ContentView.swift */,
 				5C910187287E86A600251D45 /* GridLayout.swift */,
 				5C910189287E86BF00251D45 /* ListLayout.swift */,

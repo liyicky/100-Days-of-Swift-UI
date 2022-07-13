@@ -16,28 +16,28 @@ struct GridLayout: View {
     let missions: [Mission]
     let astronauts: [String: Astronaut]
     
+    var animation: Namespace.ID
+    
     var body: some View {
         ScrollView(.vertical) {
             LazyVGrid(columns: columns) {
                 ForEach(missions) { mission in
-                    NavigationLink {
-                        MissionView(mission: mission, astronauts: astronauts)
-                    } label: {
+                    VStack {
+                        Image(mission.image)
+                            .resizable()
+                            .scaledToFit()
+                            .matchedGeometryEffect(id: mission.image, in: animation)
+                            .frame(width: 50, height: 50)
                         VStack {
-                            Image(mission.image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 100, height: 100)
-                            VStack {
-                                Text(mission.displayName)
-                                    .font(.headline)
-                                Text(mission.launchDate ?? "N/A")
-                                    .font(.caption)
-                            }
-                            .frame(maxWidth: .infinity)
+                            Text(mission.displayName)
+                                .matchedGeometryEffect(id: mission.displayName, in: animation)
+                                .font(.headline)
+                            Text(mission.launchDate ?? "N/A")
+                                .matchedGeometryEffect(id: mission.id, in: animation)
+                                .font(.caption)
                         }
-                    }
-                    
+                        .frame(maxWidth: .infinity)
+                    }    
                 }
             } // LazyVGrid
         }

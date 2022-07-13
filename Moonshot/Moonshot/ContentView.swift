@@ -9,32 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var gridLayoutToggle = true
+    @Namespace var animation
+    
+    @State private var gridLayoutToggle: Bool = true
         
     let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     let missions: [Mission] = Bundle.main.decode("missions.json")
     
-    
-    
     var body: some View {
-        NavigationView {
+        VStack {
+            Button("Toggle") { withAnimation { gridLayoutToggle.toggle()} }
             Group {
-                if gridLayoutToggle {
-                    GridLayout(missions: missions, astronauts: astronauts)
-                } else {
-                    ListLayout(missions: missions, astronauts: astronauts)
-                }
-            }
-            .navigationTitle("Moonshot")
-            .toolbar {
-                Button {
-                    withAnimation {
-                        gridLayoutToggle.toggle()
-                    }
-                } label: {
-                    Text(gridLayoutToggle ? "List View" : "Grid View")
-                }
                 
+                if gridLayoutToggle {
+                    GridLayout(missions: missions, astronauts: astronauts, animation: animation)
+                } else {
+                    ListLayout(missions: missions, astronauts: astronauts, animation: animation)
+                }
             }
         }
     }
