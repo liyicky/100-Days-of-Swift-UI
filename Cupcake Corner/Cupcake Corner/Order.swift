@@ -65,8 +65,17 @@ class Order: ObservableObject, Codable {
     @Published var zip = ""
     
     var hasValidAddress: Bool {
+        
         if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
             return false
+        }
+        
+        let regex = try! NSRegularExpression(pattern: "^(\\s+)$")
+        for string in [name, streetAddress, city, zip] {
+            let range = NSRange(location: 0, length: string.utf16.count)
+            if regex.firstMatch(in: string, options: [], range: range) != nil {
+                return false
+            }
         }
         return true
     }
