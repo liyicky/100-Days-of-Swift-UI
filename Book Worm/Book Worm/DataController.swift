@@ -9,13 +9,17 @@ import CoreData
 import Foundation
 
 class DataController: ObservableObject {
-    let container = NSPersistentContainer(name: "Bookworm")
+    static var context: NSManagedObjectContext {
+        return container.viewContext
+    }
     
-    init() {
+    static var container: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "Bookworm")
         container.loadPersistentStores { description, error in
             if let error = error {
                 print("Core Data failed to load. Abandon all hope. \(error.localizedDescription)")
             }
         }
-    }
+        return container
+    }()
 }
