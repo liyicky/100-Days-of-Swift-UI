@@ -17,6 +17,14 @@ struct DetailView: View {
     
     let book: Book
     
+    var bookTitle: String {
+        if let title = book.title, let date = book.date {
+            return title + " " + date.formatted()
+        }
+        
+        return book.title ?? "Unknown Title"
+    }
+    
     var body: some View {
         ScrollView {
             ZStack(alignment: .bottomTrailing) {
@@ -41,7 +49,7 @@ struct DetailView: View {
             RatingView(rating: .constant(Int(book.rating)))
                 .font(.largeTitle)
         }
-        .navigationTitle(book.title ?? "Unkonwn Book")
+        .navigationTitle(bookTitle ?? "Unkonwn Book")
         .navigationBarTitleDisplayMode(.inline)
         .alert("Delete book", isPresented: $showingDeleteAlert) {
             Button("Delete", role: .destructive, action: deleteBook)
@@ -72,6 +80,7 @@ struct DetailView_Previews: PreviewProvider {
         book.genre = "Thriller"
         book.rating = Int16(5)
         book.review = "One of the most classic science fiction novels ever written, Jurassic Park is a tense, action filled, and groundbreaking book that won't let you go! The novel takes place on a tropical island, where a man has invented a technique to extract dinosaur DNA from mosquitoes, and is then able to breed living dinosaurs. However, something goes terribly wrong, and the characters then have to escape the island with giant dinosaurs after them. The novel is incredible, and it displays the dinosaurs perfectly. The characters are all fleshed out and seem like real people, and the couple sub-plots are exciting and do not seem tedious at all. I would recommend this book to anyone looking for an action story, a sci-fi novel, or a good book in general."
+        book.date = Date.now
         
         return NavigationView {
             DetailView(book: book)
