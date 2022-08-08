@@ -11,8 +11,9 @@ struct FilteredList: View {
     
     @FetchRequest var fetchRequest: FetchedResults<Singer>
     
-    init(filter: String) {
-        _fetchRequest = FetchRequest<Singer>(sortDescriptors: [], predicate: NSPredicate(format: "lastName BEGINSWITH %@", filter))
+    
+    init(predicate: String, filter: String) {
+        _fetchRequest = FetchRequest<Singer>(sortDescriptors: [], predicate: NSPredicate(format: "\(predicate) %@", filter))
     }
 
     
