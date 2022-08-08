@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Candy" representedClassName="Candy" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="country" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Country" inverseName="candies" inverseEntity="Country"/>
+    </entity>
+    <entity name="Country" representedClassName="Country" syncable="YES">
+        <attribute name="fullName" optional="YES" attributeType="String"/>
+        <attribute name="shortName" optional="YES" attributeType="String"/>
+        <relationship name="candies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Candy" inverseName="country" inverseEntity="Candy"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="shortName"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="Movie" representedClassName="Movie" syncable="YES">
         <attribute name="director" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Ship" representedClassName="Ship" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="universe" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Singer" representedClassName="Singer" syncable="YES">
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Wizard" representedClassName="Wizard" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -16,5 +38,9 @@
     <elements>
         <element name="Movie" positionX="-36" positionY="9" width="128" height="74"/>
         <element name="Wizard" positionX="0" positionY="72" width="128" height="44"/>
+        <element name="Ship" positionX="27" positionY="90" width="128" height="59"/>
+        <element name="Singer" positionX="54" positionY="117" width="128" height="59"/>
+        <element name="Candy" positionX="9" positionY="81" width="128" height="59"/>
+        <element name="Country" positionX="18" positionY="90" width="128" height="74"/>
     </elements>
 </model>
