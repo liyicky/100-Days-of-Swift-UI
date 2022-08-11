@@ -16,6 +16,12 @@
 		5C79DEB228A0EB55005C2564 /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79DEB128A0EB55005C2564 /* ViewManager.swift */; };
 		5C79DEB428A10C5A005C2564 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79DEB328A10C5A005C2564 /* DetailView.swift */; };
 		5C79DEB728A34BE4005C2564 /* ScalingHeaderScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = 5C79DEB628A34BE3005C2564 /* ScalingHeaderScrollView */; };
+		5C79DEB928A3D282005C2564 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79DEB828A3D282005C2564 /* DataManager.swift */; };
+		5C79DEBC28A3D436005C2564 /* Stash.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5C79DEBA28A3D436005C2564 /* Stash.xcdatamodeld */; };
+		5C79DEC128A3DF02005C2564 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79DEBD28A3DF02005C2564 /* UserEntity+CoreDataClass.swift */; };
+		5C79DEC228A3DF02005C2564 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79DEBE28A3DF02005C2564 /* UserEntity+CoreDataProperties.swift */; };
+		5C79DEC328A3DF02005C2564 /* FriendEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79DEBF28A3DF02005C2564 /* FriendEntity+CoreDataClass.swift */; };
+		5C79DEC428A3DF02005C2564 /* FriendEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79DEC028A3DF02005C2564 /* FriendEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +34,12 @@
 		5C79DEAF28A0E2B6005C2564 /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		5C79DEB128A0EB55005C2564 /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		5C79DEB328A10C5A005C2564 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		5C79DEB828A3D282005C2564 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		5C79DEBB28A3D436005C2564 /* Stash.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Stash.xcdatamodel; sourceTree = "<group>"; };
+		5C79DEBD28A3DF02005C2564 /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5C79DEBE28A3DF02005C2564 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5C79DEBF28A3DF02005C2564 /* FriendEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FriendEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5C79DEC028A3DF02005C2564 /* FriendEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FriendEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,12 +73,18 @@
 		5C79DE9E28A0D86C005C2564 /* FriendFace */ = {
 			isa = PBXGroup;
 			children = (
+				5C79DEBD28A3DF02005C2564 /* UserEntity+CoreDataClass.swift */,
+				5C79DEBE28A3DF02005C2564 /* UserEntity+CoreDataProperties.swift */,
+				5C79DEBF28A3DF02005C2564 /* FriendEntity+CoreDataClass.swift */,
+				5C79DEC028A3DF02005C2564 /* FriendEntity+CoreDataProperties.swift */,
 				5C79DEB128A0EB55005C2564 /* ViewManager.swift */,
 				5C79DE9F28A0D86C005C2564 /* FriendFaceApp.swift */,
 				5C79DEA128A0D86C005C2564 /* ContentView.swift */,
 				5C79DEAD28A0DBE6005C2564 /* User.swift */,
 				5C79DEB328A10C5A005C2564 /* DetailView.swift */,
 				5C79DEAF28A0E2B6005C2564 /* ApiManager.swift */,
+				5C79DEB828A3D282005C2564 /* DataManager.swift */,
+				5C79DEBA28A3D436005C2564 /* Stash.xcdatamodeld */,
 				5C79DEA328A0D86D005C2564 /* Assets.xcassets */,
 				5C79DEA528A0D86D005C2564 /* Preview Content */,
 			);
@@ -157,10 +175,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C79DEC428A3DF02005C2564 /* FriendEntity+CoreDataProperties.swift in Sources */,
 				5C79DEB028A0E2B6005C2564 /* ApiManager.swift in Sources */,
+				5C79DEC328A3DF02005C2564 /* FriendEntity+CoreDataClass.swift in Sources */,
 				5C79DEB428A10C5A005C2564 /* DetailView.swift in Sources */,
 				5C79DEA228A0D86C005C2564 /* ContentView.swift in Sources */,
+				5C79DEC228A3DF02005C2564 /* UserEntity+CoreDataProperties.swift in Sources */,
+				5C79DEB928A3D282005C2564 /* DataManager.swift in Sources */,
+				5C79DEC128A3DF02005C2564 /* UserEntity+CoreDataClass.swift in Sources */,
 				5C79DEB228A0EB55005C2564 /* ViewManager.swift in Sources */,
+				5C79DEBC28A3D436005C2564 /* Stash.xcdatamodeld in Sources */,
 				5C79DEA028A0D86C005C2564 /* FriendFaceApp.swift in Sources */,
 				5C79DEAE28A0DBE6005C2564 /* User.swift in Sources */,
 			);
@@ -382,6 +406,19 @@
 			productName = ScalingHeaderScrollView;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		5C79DEBA28A3D436005C2564 /* Stash.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5C79DEBB28A3D436005C2564 /* Stash.xcdatamodel */,
+			);
+			currentVersion = 5C79DEBB28A3D436005C2564 /* Stash.xcdatamodel */;
+			path = Stash.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5C79DE9428A0D86C005C2564 /* Project object */;
 }

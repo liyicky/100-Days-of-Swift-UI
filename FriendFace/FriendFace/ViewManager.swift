@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 class ViewManager: ObservableObject {
     
@@ -15,11 +16,24 @@ class ViewManager: ObservableObject {
     @Published var users = [User]()
     @Published var sortedUsers = [String: [User]]()
     
+    @MainActor
     func fetchUsers() async {
-        let data = await ApiManager.fetchData()
-        if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
-            users = decodedResponse
-            sortedUsers = sortUsers()
+        if users.isEmpty { // lazy load
+            let request = UserEntity.fetchRequest()
+            do {
+                let results = try DataManager.INSTANCE.moc.fetch(request)
+                
+                for result in results {
+                    let userEntity = result as UserEntity
+                    let user = User(id: userEntity.wrappedId, isActive: userEntity.isActive, name: userEntity.wrappedName, age: Int(userEntity.age), company: userEntity.wrappedCompany, email: userEntity.wrappedEmail, address: userEntity.wrappedEmail, about: userEntity.wrappedAbout, registered: userEntity.wrappedRegistered, tags: userEntity.wrappedTags, friends: [])
+                    users.append(user)
+                }
+                
+                sortedUsers = sortUsers()
+                
+            } catch let error as NSError {
+                print("Couldn't fetch. \(error.localizedDescription)")
+            }
         }
     }
     

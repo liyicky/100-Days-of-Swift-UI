@@ -11,6 +11,7 @@ class ApiManager {
     
     static let REQUEST_URL = "https://www.hackingwithswift.com/samples/friendface.json"
     
+    @MainActor
     static func fetchData() async -> Data {
         guard let url = URL(string: ApiManager.REQUEST_URL) else {
             print("Invalid URL")

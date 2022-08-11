@@ -13,6 +13,9 @@ struct FriendFaceApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .task {
+                    await DataManager.INSTANCE.fetchUsers()
+                }
         }
     }
 }

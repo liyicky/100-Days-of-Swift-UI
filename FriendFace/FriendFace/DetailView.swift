@@ -41,7 +41,7 @@ struct DetailView: View {
                             .frame(width: 25, height: 25)
                             .foregroundColor(user.isActive ? .green : .red)
                     }
-                        .offset(y: 50)
+                    .offset(y: 50)
                 }
             } content: {
                 VStack {
@@ -114,6 +114,6 @@ struct InfoCell: View {
                 .fontWeight(.light)
             Spacer()
         }
-            .padding(.bottom, 1)
+        .padding(.bottom, 1)
     }
 }
