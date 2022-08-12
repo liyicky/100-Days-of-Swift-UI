@@ -11,6 +11,7 @@
 		5C79DED428A4F1F2005C2564 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79DED328A4F1F2005C2564 /* ContentView.swift */; };
 		5C79DED628A4F1F4005C2564 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C79DED528A4F1F4005C2564 /* Assets.xcassets */; };
 		5C79DED928A4F1F4005C2564 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C79DED828A4F1F4005C2564 /* Preview Assets.xcassets */; };
+		5C79DEE028A68980005C2564 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79DEDF28A68980005C2564 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		5C79DED328A4F1F2005C2564 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5C79DED528A4F1F4005C2564 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C79DED828A4F1F4005C2564 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5C79DEDF28A68980005C2564 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				5C79DED128A4F1F2005C2564 /* InstafilterApp.swift */,
 				5C79DED328A4F1F2005C2564 /* ContentView.swift */,
+				5C79DEDF28A68980005C2564 /* ImagePicker.swift */,
 				5C79DED528A4F1F4005C2564 /* Assets.xcassets */,
 				5C79DED728A4F1F4005C2564 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C79DEE028A68980005C2564 /* ImagePicker.swift in Sources */,
 				5C79DED428A4F1F2005C2564 /* ContentView.swift in Sources */,
 				5C79DED228A4F1F2005C2564 /* InstafilterApp.swift in Sources */,
 			);
