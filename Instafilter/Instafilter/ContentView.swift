@@ -17,6 +17,16 @@ struct ContentView: View {
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     @State private var showingFilterSheet = false
     @State private var processedImage: UIImage?
+    
+    /*
+     0. Intensity
+     1. Radius
+     2. Scale
+     3. Amount
+     4. Angle
+     5. Center
+    */
+    @State private var sliderSwitches = [Bool]()
     let context = CIContext()
 
     var body: some View {
@@ -107,6 +117,8 @@ struct ContentView: View {
         if inputKeys.contains(kCIInputIntensityKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey) }
         if inputKeys.contains(kCIInputRadiusKey) { currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey) }
         if inputKeys.contains(kCIInputScaleKey) { currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey) }
+        if inputKeys.contains(kCIInputAmountKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputAmountKey)}
+        if inputKeys.contains(kCIInputAngleKey) { currentFilter.setValue(filterIntensity, forKey: kCIInputAngleKey)}
 
         guard let outputImage = currentFilter.outputImage else { return }
 
