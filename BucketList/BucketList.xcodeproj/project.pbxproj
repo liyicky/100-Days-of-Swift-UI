@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C5ED2D529371FF20048ECD4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5ED2D429371FF20048ECD4 /* MapView.swift */; };
 		5CE889DE2935DE9200C3645D /* BucketListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE889DD2935DE9200C3645D /* BucketListApp.swift */; };
 		5CE889E02935DE9200C3645D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE889DF2935DE9200C3645D /* ContentView.swift */; };
 		5CE889E22935DE9300C3645D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE889E12935DE9300C3645D /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C5ED2D429371FF20048ECD4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		5CE889DA2935DE9200C3645D /* BucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE889DD2935DE9200C3645D /* BucketListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListApp.swift; sourceTree = "<group>"; };
 		5CE889DF2935DE9200C3645D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				5CE889DD2935DE9200C3645D /* BucketListApp.swift */,
 				5CE889DF2935DE9200C3645D /* ContentView.swift */,
+				5C5ED2D429371FF20048ECD4 /* MapView.swift */,
 				5CE889ED2935DF3900C3645D /* ContentViewManager.swift */,
 				5CE889EB2935DEAC00C3645D /* Extensions.swift */,
 				5CE889E12935DE9300C3645D /* Assets.xcassets */,
@@ -145,6 +148,7 @@
 			files = (
 				5CE889EE2935DF3900C3645D /* ContentViewManager.swift in Sources */,
 				5CE889E02935DE9200C3645D /* ContentView.swift in Sources */,
+				5C5ED2D529371FF20048ECD4 /* MapView.swift in Sources */,
 				5CE889EC2935DEAC00C3645D /* Extensions.swift in Sources */,
 				5CE889DE2935DE9200C3645D /* BucketListApp.swift in Sources */,
 			);
@@ -278,6 +282,7 @@
 				DEVELOPMENT_TEAM = 24495W6MQC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to unlock your data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -307,6 +312,7 @@
 				DEVELOPMENT_TEAM = 24495W6MQC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to unlock your data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

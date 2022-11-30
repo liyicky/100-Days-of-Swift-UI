@@ -14,5 +14,6 @@ class ContentViewManager: ObservableObject {
     }
     
     @Published var loadingState = LoadingState.loading
+    @Published var isUnlocked = false
     
 }

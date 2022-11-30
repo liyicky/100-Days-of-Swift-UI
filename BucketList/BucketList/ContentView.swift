@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import LocalAuthentication
 
 struct ContentView: View {
     
@@ -22,8 +23,39 @@ struct ContentView: View {
             } else if vm.loadingState == .failure {
                 failureView
             }
+            
+            if vm.isUnlocked {
+                Text("Unlocked")
+            } else {
+                Text("Locked")
+            }
+            
+            MapView()
         }
+        .onAppear(perform: authenticate)
         .padding()
+    }
+    
+    func authenticate() {
+        let context = LAContext()
+        var error: NSError?
+
+        // check whether biometric authentication is possible
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            // it's possible, so go ahead and use it
+            let reason = "We need to unlock your data."
+
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                // authentication has now completed
+                if success {
+                    vm.isUnlocked = true
+                } else {
+                    // there was a problem
+                }
+            }
+        } else {
+            // no biometrics
+        }
     }
 }
 
