@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 class ContentViewManager: ObservableObject {
     
@@ -15,5 +16,14 @@ class ContentViewManager: ObservableObject {
     
     @Published var loadingState = LoadingState.loading
     @Published var isUnlocked = false
+    @Published var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
+    @Published var locations = [Location]()
+    @Published var selectedPlace: Location?
+    
+    
+    func createLocation() {
+        let newLocation = Location(id: UUID(), name: "New Location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
+        locations.append(newLocation)
+    }
     
 }

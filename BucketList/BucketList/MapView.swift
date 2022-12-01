@@ -10,18 +10,33 @@ import MapKit
 
 struct MapView: View {
     
-    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.5, longitude: -0.12), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+    @EnvironmentObject private var vm: ContentViewManager
     
     var body: some View {
-        Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
-            MapAnnotation(coordinate: location.coordinate) {
-                Circle()
-                    .stroke(.red, lineWidth: 3)
-                    .frame(width: 44, height: 44)
-                    .onTapGesture {
-                        print("Tapped on \(location.name)")
+        ZStack {
+            Map(coordinateRegion: $vm.mapRegion, annotationItems: vm.locations) { loc in
+                MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)) {
+                    VStack {
+                        Image(systemName: "star.circle")
+                            .resizable()
+                            .foregroundColor(.red)
+                            .frame(width: 44, height: 44)
+                            .background(.white)
+                            .clipShape(Circle())
+                        
+                        Text(loc.name)
+                            .fixedSize()
                     }
+                    .onTapGesture {
+                        vm.selectedPlace = loc
+                    }
+                }
             }
+                .ignoresSafeArea()
+            Circle()
+                .fill(.blue)
+                .opacity(0.3)
+                .frame(width: 32, height: 32)
         }
     }
 }
@@ -31,14 +46,3 @@ struct MapView_Previews: PreviewProvider {
         MapView()
     }
 }
-
-struct Location: Identifiable {
-    let id = UUID()
-    let name: String
-    let coordinate: CLLocationCoordinate2D
-}
-
-let locations = [
-    Location(name: "Buckingham Palace", coordinate: CLLocationCoordinate2D(latitude: 51.501, longitude: -0.141)),
-    Location(name: "Tower of London", coordinate: CLLocationCoordinate2D(latitude: 51.508, longitude: -0.076))
-]

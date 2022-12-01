@@ -13,27 +13,23 @@ struct ContentView: View {
     @EnvironmentObject private var vm: ContentViewManager
     
     var body: some View {
-        VStack {
-            fileManagerTest
-            
-            if vm.loadingState == .loading {
-                loadingView
-            } else if vm.loadingState == .success {
-                successView
-            } else if vm.loadingState == .failure {
-                failureView
-            }
-            
-            if vm.isUnlocked {
-                Text("Unlocked")
-            } else {
-                Text("Locked")
-            }
-            
+        ZStack {
             MapView()
+                .ignoresSafeArea()
+            
+            
+            VStack {
+                buttonHud
+                
+            }
         }
-        .onAppear(perform: authenticate)
-        .padding()
+        .sheet(item: $vm.selectedPlace) { place in
+            EditView(location: place) { newLocation in
+                if let index = vm.locations.firstIndex(of: place) {
+                    vm.locations[index] = newLocation
+                }
+            }
+        }
     }
     
     func authenticate() {
@@ -67,6 +63,52 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 extension ContentView {
+    
+    private var buttonHud: some View {
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                Button {
+                    vm.createLocation()
+                } label: {
+                    Image(systemName: "plus")
+                }
+                .padding()
+                .background(.black.opacity(0.75))
+                .foregroundColor(.white)
+                .font(.title)
+                .clipShape(Circle())
+                .padding(.trailing)
+            }
+        }
+    }
+    
+    private var tmpHud: some View {
+        
+        VStack {
+            fileManagerTest
+            
+            
+            if vm.loadingState == .loading {
+                loadingView
+            } else if vm.loadingState == .success {
+                successView
+            } else if vm.loadingState == .failure {
+                failureView
+            }
+            
+            if vm.isUnlocked {
+                Text("Unlocked")
+            } else {
+                Text("Locked")
+            }
+        }
+        .padding()
+        .background(.regularMaterial)
+        .padding()
+    }
+    
     private var fileManagerTest: some View {
         Text("Hello World")
             .onTapGesture {
