@@ -11,6 +11,7 @@
 		5CDD9F4729384F0C00951C16 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDD9F4629384F0C00951C16 /* Location.swift */; };
 		5CDD9F492938571600951C16 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDD9F482938571600951C16 /* EditView.swift */; };
 		5CDD9F4B2939923600951C16 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDD9F4A2939923600951C16 /* Result.swift */; };
+		5CDD9F4D293B88F000951C16 /* FireManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CDD9F4C293B88F000951C16 /* FireManager-DocumentsDirectory.swift */; };
 		5CE889DE2935DE9200C3645D /* BucketListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE889DD2935DE9200C3645D /* BucketListApp.swift */; };
 		5CE889E02935DE9200C3645D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE889DF2935DE9200C3645D /* ContentView.swift */; };
 		5CE889E22935DE9300C3645D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CE889E12935DE9300C3645D /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		5CDD9F4629384F0C00951C16 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		5CDD9F482938571600951C16 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		5CDD9F4A2939923600951C16 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		5CDD9F4C293B88F000951C16 /* FireManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FireManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 		5CE889DA2935DE9200C3645D /* BucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CE889DD2935DE9200C3645D /* BucketListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListApp.swift; sourceTree = "<group>"; };
 		5CE889DF2935DE9200C3645D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,8 +49,6 @@
 		5CE889D12935DE9200C3645D = {
 			isa = PBXGroup;
 			children = (
-				5CDD9F4A2939923600951C16 /* Result.swift */,
-				5CDD9F482938571600951C16 /* EditView.swift */,
 				5CE889DC2935DE9200C3645D /* BucketList */,
 				5CE889DB2935DE9200C3645D /* Products */,
 			);
@@ -65,6 +65,9 @@
 		5CE889DC2935DE9200C3645D /* BucketList */ = {
 			isa = PBXGroup;
 			children = (
+				5CDD9F4C293B88F000951C16 /* FireManager-DocumentsDirectory.swift */,
+				5CDD9F4A2939923600951C16 /* Result.swift */,
+				5CDD9F482938571600951C16 /* EditView.swift */,
 				5CE889DD2935DE9200C3645D /* BucketListApp.swift */,
 				5CE889DF2935DE9200C3645D /* ContentView.swift */,
 				5C5ED2D429371FF20048ECD4 /* MapView.swift */,
@@ -163,6 +166,7 @@
 				5CDD9F4729384F0C00951C16 /* Location.swift in Sources */,
 				5CDD9F4B2939923600951C16 /* Result.swift in Sources */,
 				5CE889DE2935DE9200C3645D /* BucketListApp.swift in Sources */,
+				5CDD9F4D293B88F000951C16 /* FireManager-DocumentsDirectory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

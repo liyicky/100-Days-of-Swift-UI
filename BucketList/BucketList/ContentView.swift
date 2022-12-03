@@ -14,44 +14,28 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            MapView()
-                .ignoresSafeArea()
-            
+            if vm.isUnlocked {
+                MapView()
+                    .ignoresSafeArea()
+            } else {
+                Button("Unlock Places") {
+                    vm.authenticate()
+                }
+                .padding()
+                .background(.blue)
+                .foregroundColor(.white)
+                .clipShape(Capsule())
+            }
             
             VStack {
                 tmpHud
                 buttonHud
-                
             }
         }
         .sheet(item: $vm.selectedPlace) { place in
-            EditView(location: place) { newLocation in
-                if let index = vm.locations.firstIndex(of: place) {
-                    vm.locations[index] = newLocation
-                }
+            EditView(location: place) {
+                vm.update(location: $0)
             }
-        }
-    }
-    
-    func authenticate() {
-        let context = LAContext()
-        var error: NSError?
-
-        // check whether biometric authentication is possible
-        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-            // it's possible, so go ahead and use it
-            let reason = "We need to unlock your data."
-
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
-                // authentication has now completed
-                if success {
-                    vm.isUnlocked = true
-                } else {
-                    // there was a problem
-                }
-            }
-        } else {
-            // no biometrics
         }
     }
 }
