@@ -7,36 +7,17 @@
 
 import SwiftUI
 import LocalAuthentication
+import MapKit
 
 struct ContentView: View {
     
-    @EnvironmentObject private var vm: ContentViewManager
+    @EnvironmentObject var store: BucketListStore
     
     var body: some View {
-        ZStack {
-            if vm.isUnlocked {
-                MapView()
-                    .ignoresSafeArea()
-            } else {
-                Button("Unlock Places") {
-                    vm.authenticate()
-                }
-                .padding()
-                .background(.blue)
-                .foregroundColor(.white)
-                .clipShape(Capsule())
+        map
+            .onAppear {
+                store.dispatch(.appStart)
             }
-            
-            VStack {
-                tmpHud
-                buttonHud
-            }
-        }
-        .sheet(item: $vm.selectedPlace) { place in
-            EditView(location: place) {
-                vm.update(location: $0)
-            }
-        }
     }
 }
 
@@ -51,11 +32,27 @@ extension ContentView {
     
     private var buttonHud: some View {
         VStack {
-            Spacer()
             HStack {
-                Spacer()
                 Button {
-                    vm.createLocation()
+//                    vm.createLocation()
+                } label: {
+                    Image(systemName: "plus")
+                        .padding()
+                        .background(.black.opacity(0.75))
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .clipShape(Circle())
+                        .padding(.trailing)
+                }
+            }
+        }
+    }
+    
+    private var secondButtonHud: some View {
+        VStack {
+            HStack {
+                Button {
+//                    vm.createLocation()
                 } label: {
                     Image(systemName: "plus")
                 }
@@ -64,8 +61,9 @@ extension ContentView {
                 .foregroundColor(.white)
                 .font(.title)
                 .clipShape(Circle())
-                .padding(.trailing)
+                .padding(.leading)
             }
+            
         }
     }
     
@@ -75,19 +73,19 @@ extension ContentView {
             fileManagerTest
             
             
-            if vm.loadingState == .loading {
-                loadingView
-            } else if vm.loadingState == .success {
-                successView
-            } else if vm.loadingState == .failure {
-                failureView
-            }
-            
-            if vm.isUnlocked {
-                Text("Unlocked")
-            } else {
-                Text("Locked")
-            }
+//            if vm.loadingState == .loading {
+//                loadingView
+//            } else if vm.loadingState == .success {
+//                successView
+//            } else if vm.loadingState == .failure {
+//                failureView
+//            }
+//
+//            if vm.isUnlocked {
+//                Text("Unlocked")
+//            } else {
+//                Text("Locked")
+//            }
         }
         .padding()
         .background(.regularMaterial)
@@ -108,6 +106,33 @@ extension ContentView {
                     print(error.localizedDescription)
                 }
             }
+    }
+    
+    private var map: some View {
+        ZStack {
+            Map(coordinateRegion: $store.state.mapRegion, annotationItems: [Location(id: UUID(), name: "Place A", description: "Something", latitude: 36.21, longitude: 138.24)]) { loc in
+                MapAnnotation(coordinate: CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)) {
+                    VStack {
+                        Image(systemName: "star.circle")
+                            .resizable()
+                            .foregroundColor(.red)
+                            .frame(width: 44, height: 44)
+                            .background(.white)
+                            .clipShape(Circle())
+                        
+                        Text(loc.name)
+                            .fixedSize()
+                    }
+//                    .onTapGesture {
+//                        vm.selectedPlace = loc
+//                    }
+                }
+            }
+            Circle()
+                .fill(.blue)
+                .opacity(0.3)
+                .frame(width: 32, height: 32)
+        }
     }
     
     private var loadingView: some View {

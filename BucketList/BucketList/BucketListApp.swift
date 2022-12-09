@@ -10,12 +10,12 @@ import SwiftUI
 @main
 struct BucketListApp: App {
     
-    @StateObject private var vm = ContentViewManager()
-    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(vm)
+                .environmentObject(
+                    BucketListStore(initial: BucketListState(), reducer: bucketListReducer)
+                )
         }
     }
 }
